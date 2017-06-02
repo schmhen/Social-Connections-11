@@ -1,0 +1,314 @@
+{
+	"variables": [],
+	"info": {
+		"name": "SC11",
+		"_postman_id": "b028d640-a576-dd14-1435-959c1878bf91",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Activity Stream",
+			"request": {
+				"url": "https://apps.na.collabserv.com/connections/opensocial/basic/rest/activitystreams/@me/@all/@all",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "Basic aHNjaG1pZHRAaGVkZXJzb2Z0LmRlOm1haWswNjkx",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"actor\": {\n        \"id\": \"@me\"\n    },\n    \"verb\": \"post\",\n    \"title\": \"Presenting the REST API Hip-Hop\",\n    \"content\": \"I am currently in my session dancing some <b>Hip-Hop</b> moves\",\n    \"object\": {\n        \"summary\": \"I take a step to the left, and one to the right!\",\n        \"objectType\": \"note\",\n        \"id\": \"objectid\",\n        \"displayName\": \"REST-API Hip-Hop\"\n    }\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Embedded Experience",
+			"request": {
+				"url": "https://apps.na.collabserv.com/connections/opensocial/basic/rest/activitystreams/@me/@all",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "Basic aHNjaG1pZHRAaGVkZXJzb2Z0LmRlOm1haWswNjkx",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"actor\": {\n        \"id\": \"@me\"\n    },\n    \"verb\": \"post\",\n    \"content\": \"This event is my <b>Embedded Experience!</b>\",\n    \"object\": {\n        \"summary\": \"Have a look at hedersoft:\",\n        \"objectType\": \"note\",\n        \"id\": \"objectid\",\n        \"displayName\": \"hedersoft's homepage\"\n    },\n    \"openSocial\": {\n        \"embed\": {\n        \t\"gadget\": \"https:\\/\\/apps.na.collabserv.com\\/connections\\/resources\\/web\\/com.ibm.social.ee.cloud\\/cloudee.xml\",\n        \t\"context\": {\n            \t\"url\":\"https:\\/\\/www.hedersoft.de\",\n            \t\"height\": \"400\"\n        \t}\n        }\n    }\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Forum Entry",
+			"request": {
+				"url": {
+					"raw": "https://apps.na.collabserv.com/forums/atom/topics?forumUuid={{forum-uuid}}",
+					"protocol": "https",
+					"auth": {},
+					"host": [
+						"apps",
+						"na",
+						"collabserv",
+						"com"
+					],
+					"path": [
+						"forums",
+						"atom",
+						"topics"
+					],
+					"query": [
+						{
+							"key": "forumUuid",
+							"value": "{{forum-uuid}}",
+							"equals": true,
+							"description": ""
+						}
+					],
+					"variable": []
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/atom+xml",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "Basic aHNjaG1pZHRAaGVkZXJzb2Z0LmRlOm1haWswNjkx",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<entry xmlns=\"http://www.w3.org/2005/Atom\">\n    <title type=\"text\">I have a question about SC 11</title>\n    <content type=\"html\">Do you think SC11 in Chicago is awesome?</content>\n    <category scheme=\"http://www.ibm.com/xmlns/prod/sn/type\" term=\"forum-topic\"></category>\n    <category scheme=\"http://www.ibm.com/xmlns/prod/sn/flags\" term=\"question\"/>\n    <category term=\"question\"></category>\n    <category term=\"chicago\"></category>\n    <category term=\"2017\"></category>\n</entry>"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Wiki Entry",
+			"request": {
+				"url": "https://apps.na.collabserv.com/wikis/basic/api/wiki/{{wiki-id}}/feed",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/atom+xml",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "Basic aHNjaG1pZHRAaGVkZXJzb2Z0LmRlOm1haWswNjkx",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<entry xmlns=\"http://www.w3.org/2005/Atom\" xmlns:td=\"urn:ibm.com/td\">\n<title type=\"text\">Social Connections 11 Wiki Sample</title>\n<td:label>Social Connections 11 Wiki Sample</td:label>\n<content type=\"text/html\"><![CDATA[<?xml version=\"1.0\" encoding=\"UTF-8\"?><!DOCTYPE html [<!ENTITY amp \"&#38;#38;\"><!ENTITY lt \"&#60;#60;\"><!ENTITY gt \"&#62;#62;\"><!ENTITY nbsp \"&#160;\"><!ENTITY apos \"&#39;\"><!ENTITY quot \"&#34;\">]>\n<div>\n    <h2>Inhalt</h2>\n    <div>\n       <h1>Enter the main heading, usually the same as the title.</h1>\n<p>Be <b>bold</b> in stating your key points. Put them in a list: </p>\n<ul>\n<li>The first item in your list</li>\n<li>The second item; <i>italicize</i> key words</li>\n</ul>\n<p>Improve your image by including an image. </p>\n<table>\n<tr>\n<th>This</th>\n<th>is</th>\n</tr>\n<tr>\n<td>a</td>\n<td>table</td>\n</tr>\n</table>\n<p>Add a link to your favorite <a href=\"http://www.hedersoft.de/\">Web site</a>.\nBreak up your page with a horizontal rule or two. </p>\n<hr/>\n<p>Finally, link to <a href=\"page2.html\">another page</a> in your own Web site.</p>\n<!-- And add a copyright notice.-->\n<p>&#169; hedersoft GmbH, 2017</p>\n    </div>\n</div>]]></content>\n<category scheme=\"tag:ibm.com,2006:td/type\" term=\"page\" label=\"page\"/>\n<category term=\"social\"/>\n<category term=\"connections\"/>\n<category term=\"chicago\"/>\n</entry>"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Blog Entry",
+			"request": {
+				"url": "https://apps.na.collabserv.com/blogs/{{blog-id}}/api/entries",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic aHNjaG1pZHRAaGVkZXJzb2Z0LmRlOm1haWswNjkx",
+						"description": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/atom+xml",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<entry xmlns=\"http://www.w3.org/2005/Atom\">\n    <title type=\"text\">Social Connections 11 - Chicago</title>\n    <category term=\"partner\" />\n    <category term=\"demo\" />\n    <content type=\"html\">\n      &lt;div class=&quot;title_area&quot;&gt;\n    &lt;h1 class=&quot;post_title&quot;&gt;&lt;a href=&quot;https://blog.hedersoft.de/2017/05/speaking-at-social-connections-11-about-connections-apis/&quot; title=&quot;Speaking at Social Connections 11 about Connections APIs&quot;&gt;Speaking at Social Connections 11 about Connections APIs&lt;/a&gt;&lt;/h1&gt;\n&lt;/div&gt;\n&lt;div class=&quot;post_content&quot;&gt;\n    &lt;p&gt;\n        &lt;p&gt;\n            &lt;img src=&quot;https://apps.na.collabserv.com/files/basic/api/library/fe4d8a34-35ea-4804-8963-68afc2513992/document/dc33c897-40a3-4eff-94a1-d82afe9c05ec/media/soccnx-logo-smaller.png&quot;/&gt;\n        &lt;/p&gt;\n        &lt;p&gt;Only one more week until Social Connections 11 is going to take place in Chicago. I am really happy to be selected\n            as a speaker for this event! I will be speaking about the IBM Connections REST APIs and will show in many live\n            examples how to use them, what to keep in mind an what to avoid. Furthermore I will give a brief introduction\n            on what to expect with Connections Pink in terms of APIs. Looking forward to seeing you in Chicago!&lt;/p&gt;\n        &lt;p&gt;\n            &lt;img src=&quot;https://apps.na.collabserv.com/files/basic/api/library/fe4d8a34-35ea-4804-8963-68afc2513992/document/0c7505da-b5bc-4e9c-b9d6-ee8885f8b786/media/Bildschirmfoto-2017-05-24-um-09.09.12-1024x206.png&quot;/&gt;\n        &lt;/p&gt;\n    &lt;/p&gt;\n&lt;/div&gt;\n    </content>\n</entry>"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Get Nonce",
+			"request": {
+				"url": "https://apps.na.collabserv.com/files/basic/api/nonce",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic aHNjaG1pZHRAaGVkZXJzb2Z0LmRlOm1haWswNjkx",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "File Upload",
+			"request": {
+				"url": {
+					"raw": "https://apps.na.collabserv.com/files/basic/api/communitylibrary/{{community-id}}/feed?tag=social&tag=connections&tag=chicago&tag=2017",
+					"protocol": "https",
+					"auth": {},
+					"host": [
+						"apps",
+						"na",
+						"collabserv",
+						"com"
+					],
+					"path": [
+						"files",
+						"basic",
+						"api",
+						"communitylibrary",
+						"{{community-id}}",
+						"feed"
+					],
+					"query": [
+						{
+							"key": "tag",
+							"value": "social",
+							"equals": true,
+							"description": ""
+						},
+						{
+							"key": "tag",
+							"value": "connections",
+							"equals": true,
+							"description": ""
+						},
+						{
+							"key": "tag",
+							"value": "chicago",
+							"equals": true,
+							"description": ""
+						},
+						{
+							"key": "tag",
+							"value": "2017",
+							"equals": true,
+							"description": ""
+						}
+					],
+					"variable": []
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Length",
+						"value": "33303",
+						"description": ""
+					},
+					{
+						"key": "X-Update-Nonce",
+						"value": "c7ae472a-1e3c-428d-986a-2ed2a624d8f7",
+						"description": ""
+					},
+					{
+						"key": "Slug",
+						"value": "ConnectionsExpert.png",
+						"description": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "image/png",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "Basic aHNjaG1pZHRAaGVkZXJzb2Z0LmRlOm1haWswNjkx",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "file",
+					"file": {
+						"src": ""
+					}
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "EMail To Activity",
+			"request": {
+				"url": {
+					"raw": "https://apps.na.collabserv.com/activities/service/atom2/activity?activityUuid={{activity-uuid}}",
+					"protocol": "https",
+					"auth": {},
+					"host": [
+						"apps",
+						"na",
+						"collabserv",
+						"com"
+					],
+					"path": [
+						"activities",
+						"service",
+						"atom2",
+						"activity"
+					],
+					"query": [
+						{
+							"key": "activityUuid",
+							"value": "{{activity-uuid}}",
+							"equals": true,
+							"description": ""
+						}
+					],
+					"variable": []
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/atom+xml",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "Basic aHNjaG1pZHRAaGVkZXJzb2Z0LmRlOm1haWswNjkx",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<entry xmlns=\"http://www.w3.org/2005/Atom\" xmlns:td=\"urn:ibm.com/td\">\n    <id>urn:lsid:ibm.com:oa:900G0A0A0A0A8DDE3D94CA8A3D95D700000A</id>\n    <title type=\"text\">Social Connections - Last reminder</title>\n    <category scheme=\"http://www.ibm.com/xmlns/prod/sn/type\" term=\"email\" label=\"EMail\" />\n    <content type=\"html\">\n&lt;div class &quot;socmaildefaultfont&quot; dir &quot;ltr&quot; style &quot;font-family:Arial, Helvetica, sans-serif;font-size:10.5pt&quot;&gt;\n    &lt;div dir &quot;ltr&quot;&gt;&amp;nbsp;&lt;/div&gt;\n    &lt;div dir &quot;ltr&quot;&gt;Hi Everyone!&lt;/div&gt;\n    &lt;div dir &quot;ltr&quot;&gt;&amp;nbsp;&lt;/div&gt;\n    &lt;div dir &quot;ltr&quot;&gt;The week of Social Connections&amp;nbsp;is finally there, we wil= l meet each other in just a few days and I'm looking forward\n        to seeing all o= f you in Chicago!&lt;/div&gt;\n    &lt;div dir &quot;ltr&quot;&gt;As a last reminder before you head off to Chicago&amp;nbsp;I wou= ld like to ask all of you to make sure you have all the\n        info you might need = or to let us know asap if you need anything else.&lt;/div&gt;\n    &lt;div dir &quot;ltr&quot;&gt;&amp;nbsp;&lt;/div&gt;\n    &lt;div dir &quot;ltr&quot;&gt;I would also want to ask you to make sure you've copied the updated Sponsor page to your slide deck if you haven't\n        done so already. It's due to the generosity of our sponsors that we can organize these conference= s and having\n        their logo's featured is one of the ways we thank them for that. Even if you choose not to use t= he template we\n        provide we would really appreciate it if you could still use = the sponsor slide in your deck.&lt;/div&gt;\n    &lt;div dir &quot;ltr&quot;&gt;A link to the updated&amp;nbsp;slide deck can be found on the sp= eaker info page:\n        &lt;a href &quot;https:\\/\\/socialconnections.info\\/information-for-speakers&quot;&gt;https://socialconnections.info/information-for-speakers/&lt;/a&gt;.&amp;nbsp;&lt;/div&gt;\n    &lt;div dir &quot;ltr&quot;&gt;Thanks in advance!&lt;/div&gt;\n    &lt;div dir &quot;ltr&quot;&gt;&amp;nbsp;&lt;/div&gt;\n    &lt;div dir &quot;ltr&quot;&gt;Most of the team will be traveling over to Chicago tomorrow so we might be a bit slower in answering if you mail us\n        than usual but we wi= ll do our best to react as soon as possible when you contact us. The next time we will communicate\n        will hopefully be when we see each other in Chicago!&lt;/div&gt;\n    &lt;div dir &quot;ltr&quot;&gt;kind regards and safe travels,&lt;/div&gt;\n    &lt;div dir &quot;ltr&quot;&gt;&amp;nbsp;&lt;/div&gt;\n    &lt;div dir &quot;ltr&quot;&gt;Femke&lt;/div&gt;\n    &lt;div dir &quot;ltr&quot;&gt;\n        &lt;div&gt;\n            &lt;font face &quot;Default Sans Serif,Verdana,Arial,Helvetica,sans-serif&quot; siz=e &quot;2&quot;&gt;Social Connections Team&lt;/font&gt;\n        &lt;/div&gt;\n        &lt;div&gt;\n            &lt;font face &quot;Default Sans Serif,Verdana,Arial,Helvetica,sans-serif&quot; siz=e &quot;2&quot;&gt;(Wannes, Maria, Simon, Jan, Doug, Femke, Lars, Martin, Christoph)&lt;/fon=t&gt;\n        &lt;/div&gt;\n        &lt;div&gt;&amp;nbsp;&lt;/div&gt;\n        &lt;div&gt;\n            &lt;font face &quot;Default Sans Serif,Verdana,Arial,Helvetica,sans-serif&quot; size &quot;2&quot;&gt;\n                &lt;font size &quot;2&quot; style &quot;box-sizing: inherit; font-family: arial, helvetica, sans-serif;&quot;&gt;Twitter&amp;nbsp;&lt;/font&gt;\n                &lt;a href &quot;https://twitter.com/soccnx&quot; st=y le &quot;box-sizing: inherit; text-decoration: none; cursor: pointer; color: black; font-family: arial, helvetica, sans-serif; font-size: 16px;&quot;&gt;\n                    &lt;font size=&quot;2&quot; style &quot;box-sizing: inherit;&quot;&gt;@soccnx&lt;/font&gt;\n                &lt;/a&gt;\n                &lt;font size &quot;2&quot; style &quot;box-sizing: inherit; font-family: arial, helvetica, sans-serif;&quot;&gt;&amp;nbsp;|&amp;nbsp;\n                    &lt;/ font&gt;\n                        &lt;a href &quot;https://www.linkedin.com/groups/151181&quot; style &quot;box-sizing: inherit; text-decoration: none; cursor: pointer; color: black; font-family: ar=\nial, helvetica, sans-serif; font-size: 16px;&quot;&gt;\n                            &lt;font size &quot;2&quot; style &quot;box-sizing: inherit;&quot;&gt;LinkedIn&lt;/font&gt;\n                        &lt;/a&gt;\n                        &lt;font size &quot;2&quot; style &quot;box-sizing: inherit; font-family: arial, helvetica, sans-serif;&quot;&gt;&amp;nbsp;|&amp;nbsp;&lt;/font&gt;\n                        &lt;a href &quot;htt=\nps://www.facebook.com/soccnx&quot; style &quot;box-sizing: inherit; text-decoration: none; cursor: pointer; color: black; font-family: arial, helvetica, sans-seri=\nf; font-size: 16px;&quot;&gt;\n                            &lt;font size &quot;2&quot; style &quot;box-sizing: inherit;&quot;&gt;Facebook&lt;/font&gt;\n                        &lt;/a&gt;&lt;br&gt;\n                        &lt;a href &quot;http://www.socialconnections.info&quot; target &quot;blank&quot;&gt;www.socialconnections.info&lt;/a&gt;&lt;/font&gt;\n        &lt;/div&gt;\n        &lt;div&gt;\n            &lt;font face &quot;Default Sans Serif,Verdana,Arial,Helvetica,sans-serif&quot; siz=e &quot;2&quot;&gt;&lt;a href &quot;https://attendify.com/app/vhcdm4/&quot; target &quot;blank&quot;&gt;Download our Mobile app&lt;/a&gt;&lt;/font&gt;\n        &lt;/div&gt;\n    &lt;/div&gt;\n&lt;/div&gt;\n    </content>\n    <category term=\"social\"/>\n\t<category term=\"connections\"/>\n\t<category term=\"chicago\"/>\n\t<category term=\"2017\"/>\n</entry>"
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}
